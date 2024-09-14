@@ -58,11 +58,12 @@ const DashboardQA = () => {
     };
 
     const handleInputChange = (e) => {
+        console.log(typeof formData.numCasosProbar)
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
-            tasaError: (formData.numCasosFallidos * 100) / formData.numCasosProbar,
-            cobertura: (formData.numCasosEjecutados + formData.numCasosFallidos) / formData.numCasosProbar,
+            tasaError: (+formData.numCasosFallidos * 100) / +formData.numCasosProbar,
+            cobertura: ((+formData.numCasosEjecutados + +formData.numCasosFallidos)*100) / +formData.numCasosProbar,
             numCasosPendientes: (+formData.numCasosProbar - (+formData.numCasosEjecutados + +formData.numCasosFallidos))
         });
     };

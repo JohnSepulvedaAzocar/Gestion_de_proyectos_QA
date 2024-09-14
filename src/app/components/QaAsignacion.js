@@ -78,10 +78,12 @@ const QaAsignacion = () => {
     };
 
     const handleStartDateChange = (event) => {
+
         setStartDate(event.target.value);
     };
 
     const handleEndDateChange = (event) => {
+
         setEndDate(event.target.value);
     };
 
@@ -89,15 +91,16 @@ const QaAsignacion = () => {
         try {
             if (requirement && qaName && startDate && endDate) {
                 const q = query(collection(firestore, 'proyectos'), where('numberReq', '==', requirement));
-                
+                const splitDateEnd = endDate.split("-").join(", ");
+                const splitDateStart = startDate.split("-").join(", ");
+
                 const querySnapshot = await getDocs(q);
-                console.log(querySnapshot)
                 if (!querySnapshot.empty) {
                     const docRef = querySnapshot.docs[0].ref;
                     await updateDoc(docRef, {
                         certificadores: [{ nombre: qaName }],
-                        fecha_inicio: new Date(startDate),
-                        fecha_fin: new Date(endDate),
+                        fecha_inicio: new Date(splitDateStart),
+                        fecha_fin: new Date(splitDateEnd),
                         notification: [{
                             fecha_envio: new Date(),
                             mensaje: `Se le ha asiganado el requerimiento Nº ${requirement}`,
