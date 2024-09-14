@@ -1,0 +1,45 @@
+.CardContainer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.DashboardContainer {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.GraficoContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ContainerButton {
+  display: flex;
+  gap: 14px;
+  padding: 10px;
+  background: white;
+  border: 1px solid black;
+}
+
+.ModalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
